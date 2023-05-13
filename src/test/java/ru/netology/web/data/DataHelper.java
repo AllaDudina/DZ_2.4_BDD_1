@@ -32,33 +32,30 @@ public class DataHelper {
     }
 
     @Value
-    public static class FirstCard {
-        private String firsCardNumber;
-        private String firstCardBalance;
+    public static class CardInfo {
+        private String cardNumber;
+        private String testId;
 
 
     }
 
-    public static FirstCard getFirstCard() {
+    public static CardInfo getFirstCard() {
 
-        return new FirstCard("5559 0000 0000 0001", "10 000 RUB");
+        return new CardInfo("5559 0000 0000 0001", "92df3f1c-a033-48e6-8390-206f6b1f56c0");
 
     }
 
-    @Value
-    public static class SecondCard {
-        private String secondCardNumber;
-        private String secondCardBalance;
+
+    public static CardInfo getSecondCard() {
+        return new CardInfo("5559 0000 0000 0002", "0f3f5c2a-249e-4c3d-8287-09f7a039391d");
     }
 
-    public static SecondCard getSecondCard(){
-        return new SecondCard("5559 0000 0000 0002", "10 000 RUB");
+    public static int generateValidAmount(int balance) {
+        return new Random().nextInt(balance) + 1;
     }
 
-    public static int getRandomTransferAmount(int currentBalance) {
-        Random random = new Random();
-        int maxAmount = currentBalance;
-        return random.nextInt(maxAmount) + 1;
+    public static int generateInvalidAmount(int balance) {
+        return Math.abs(balance) + new Random().nextInt(10000);
     }
 
 }
